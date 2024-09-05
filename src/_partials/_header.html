@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TITRE DU SITE</title>
+    <title>Nom de page</title>
 
     <link rel="stylesheet" href="styles/main.css" />
 
@@ -16,13 +16,13 @@
 
   <body>
     <!-- SECTION HEADER -->
-    <header class="header">
+    <header data-component="Header" class="header" data-threshold=".175">
       <div class="wrapper">
         <a class="logo" href="./">
           <svg class="icon icon--md">
-              <use xlink:href="#icon-chef"></use>
+              <use xlink:href="#icon-logo"></use>
           </svg>
-          Titre du site idk
+          BETTER<span>Cook</span>
         </a>
 
         <nav class="navigation">
@@ -35,11 +35,11 @@
         </nav>
 
         <div class="menu-btn js-toggle">
-          <svg class="icon">
+          <svg class="icon open">
               <use xlink:href="#icon-menu"></use>
           </svg>
 
-          <svg class="icon">
+          <svg class="icon close">
               <use xlink:href="#icon-close"></use>
           </svg>
         </div>

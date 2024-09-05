@@ -6,8 +6,36 @@
 a {
     color: inherit;
     text-decoration: none;
+    font-size: var(--font-size-link);
+    transition: all .45s $ease-out-expo;
+    letter-spacing: .05em;
+    font-weight: 600;
 
     &:hover {
         color: var(--color-primary);
+    }
+}
+
+.logo
+{
+    --icon-size: 1.5em;
+
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size-logo);
+    letter-spacing: -.025em;
+    font-weight: 500;
+    
+    span
+    {
+        letter-spacing: -.1em;
+        font-weight: 300;
+    }
+
+    svg
+    {
+        margin-right: var(--spacing-sm);
+        height: var(--icon-size);
+        width: var(--icon-size);
     }
 }

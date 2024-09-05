@@ -2,8 +2,15 @@
    WRAPPER / ELEMENT
    ========================================================================== */
 
-.wrapper {
+.wrapper
+{
     max-width: $breakpoint-md;
     width: calc(100% - var(--spacing-md));
     margin: 0 auto;
+}
+
+.big-wrapper
+{
+    max-width: $breakpoint-lg;
+    width: calc(100% - var(--spacing-sm));
 }

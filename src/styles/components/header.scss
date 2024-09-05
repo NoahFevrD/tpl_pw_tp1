@@ -1,0 +1,191 @@
+/* ==========================================================================
+   header / component
+   ========================================================================== */
+
+.header
+{
+    --header-height: 80px;
+    
+    z-index: 100;
+    height: var(--header-height);
+    transition: all .55s $ease-out-expo;
+    color: var(--color-white);
+    position: sticky;
+    top: 0;
+    
+    &::before
+    {
+        content: "";
+        z-index: -10;
+        position: absolute;
+        background-color: var(--color-black);
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+    }
+
+    .wrapper
+    {
+        height: var(--header-height);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navigation
+    {
+        ul
+        {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        a
+        {
+            --border-size: 2px;
+            text-transform: uppercase;
+            border-bottom: 0 solid var(--color-white);
+
+            &:hover
+            {
+                border-bottom: var(--border-size) solid var(--color-primary);
+            }
+        }
+    }
+
+    .menu-btn
+    {
+        --btn-size: 30px;
+
+        display: none;
+        cursor: pointer;
+        width: var(--btn-size);
+        height: var(--btn-size);
+        position: relative;
+
+        & svg
+        {
+            width: var(--btn-size);
+            height: var(--btn-size);
+            color: var(--color-white);
+            transition: all .45s $ease-out-expo;
+            position: absolute;
+            left: 0;
+            top: 0;
+
+            
+        }
+
+        &:hover svg
+        {
+            color: var(--color-primary);
+        }
+    }
+
+    .header-is-hidden.is-scrolling-down &
+    {
+        transform: translateY(calc(-100% + var(--spacing-xs)));
+    }
+
+    @media screen and (max-width:$breakpoint-sm)
+    {
+        --header-height: 60px;
+
+        .header-is-hidden.is-scrolling-down &
+        {
+            transform: translateY(0);
+        }
+
+        .header-is-hidden.is-scrolling-down:not(.nav-is-active) &
+        {
+            transform: translateY(calc(-100% + var(--spacing-xs)));
+        }
+
+        .menu-btn
+        {
+            display: block;
+            
+            & > *
+            {
+                transition: all .35s $ease-out-expo;
+            }
+        }
+
+        .open
+        {
+            opacity: 1;
+        }
+
+        .close
+        {
+            opacity: 0;
+        }
+
+        .navigation
+        {
+            padding: var(--spacing-md);
+            transition: all .55s $ease-out-expo;
+            height: calc(100vh - var(--header-height));
+            background-color: var(--color-black);
+            margin-top: var(--header-height);
+            transform: translateY(-100%);
+            position: absolute;
+            z-index: -20;
+            width: 100vw;
+            left: 0;
+            top: 0;
+
+            ul
+            {
+                overflow-y: scroll;
+                transition: all .85s $ease-out-expo;
+                gap: var(--spacing-xl);
+                transform: translateY(-150%);
+                flex-direction: column;
+                align-items: flex-end;
+                width: 100%;
+            }
+
+            li,a
+            {
+                width: 100%;
+            }
+            
+            a
+            {
+                display: block;
+                font-size: var(--font-size-h2);
+                text-align: right;
+            }
+        }
+
+        .nav-is-active &
+        {
+            .navigation
+            {
+                transform: translateY(0);
+
+                ul
+                {
+                    transform: translateY(0);
+                    gap: var(--spacing-md);
+                }
+            }
+
+            .open
+            {
+                opacity: 0;
+            }
+
+            .close
+            {
+                opacity: 1;
+            }
+        }
+    }
+}
