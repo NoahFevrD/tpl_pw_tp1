@@ -56,8 +56,9 @@
 
             &:hover
             {
-                color: var(--color-white);
+                color: var(--color-primary);
                 background-color: transparent;
+                border: var(--border-size) solid var(--color-primary);
                 transform: scale(1.1);
             }
         }

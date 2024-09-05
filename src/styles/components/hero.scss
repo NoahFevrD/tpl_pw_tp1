@@ -1,0 +1,76 @@
+/* ==========================================================================
+   hero / component
+   ========================================================================== */
+
+.hero
+{
+    --hero-height: 600px;
+
+    height: var(--hero-height);
+    position: relative;
+    overflow: hidden;
+
+    .wrapper
+    {
+        height: 100%;
+    }
+
+    .media
+    {
+        height: 100%;
+        width: 100vw;
+        position: absolute;
+        z-index: -100;
+        left: 0;
+        top: 0;
+
+        img
+        {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center right;
+            height: 100%;
+        }
+
+        &::after
+        {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: var(--color-black);
+            mix-blend-mode: multiply;
+            opacity: .85;
+            left: 0;
+            top: 0;
+        }
+    }
+
+    .content
+    {
+        height: 100%;
+        display: flex;
+        gap: var(--spacing-sm);
+        color: var(--color-white);
+        padding: var(--spacing-md) 0;
+        justify-content: flex-end;
+        align-items: flex-start;
+        flex-direction: column;
+
+        & > *
+        {
+            width: 60%;
+        }
+    }
+}
+
+.front-page-hero
+{
+    .content
+    {
+        text-align: right;
+        align-items: flex-end;
+        justify-content: center;
+    }
+}
