@@ -59,7 +59,7 @@
         flex-direction: column;
         position: relative;
 
-        & > *
+        & > *:not(.favorite)
         {
             width: 60%;
         }
@@ -74,7 +74,7 @@
         color: var(--color-white);
         transition: all .55s $ease-out-expo;
         position: absolute;
-        right: var(--spacing-md);
+        right: 0;
 
         &:hover
         {
@@ -89,6 +89,27 @@
             &:hover
             {
                 transform: scale(1.25);
+            }
+        }
+    }
+
+    @media screen and (max-width:$breakpoint-sm)
+    {
+        --header-height: 400px;
+
+        .content
+        {
+            & > *:not(.favorite)
+            {
+                width: 80%;
+            }
+        }
+
+        .media
+        {
+            &::after
+            {
+                opacity: .95;
             }
         }
     }
@@ -107,9 +128,24 @@
 .small-hero
 {
     --hero-height: 400px;
+
+    @media screen and (max-width: $breakpoint-sm)
+    {
+        --hero-height: 300px;
+    }
 }
 
 .full-hero
 {
-    .content{}
+    .content
+    {
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+
+        & > *:not(.favorite)
+        {
+            width: 100%;
+        }
+    }
 }
