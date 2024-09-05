@@ -1,10 +1,12 @@
 import Header from "./components/Header";
+import Toggle from "./components/Toggle";
 
 export default class ComponentFactory {
   constructor() {
     this.componentInstances = [];
     this.componentList = {
       Header,
+      Toggle,
     };
     this.init();
   }
