@@ -16,6 +16,40 @@ a {
     }
 }
 
+.btn
+{
+    --pad-vert: 10px;
+    --pad-horz: 20px;
+
+    display: inline;
+    border-radius: 1000px;
+    font-size: var(--font-size-btn);
+    background-color: var(--color-primary);
+    padding: var(--pad-vert) var(--pad-horz);
+
+    &:hover
+    {
+        color: var(--color-primary);
+        background-color: var(--color-white);
+    }
+}
+
+.btn-secondary
+{
+    --btn-size: 3px;
+
+    padding: calc(var(--pad-vert) - var(--btn-size)) calc(var(--pad-horz) - var(--btn-size));
+    border: var(--btn-size) solid var(--color-white);
+    background-color: var(--color-white);
+    color: var(--color-black);
+
+    &:hover
+    {
+        color: var(--color-white);
+        background-color: transparent;
+    }
+}
+
 .logo
 {
     --icon-size: 1.5em;

@@ -7,7 +7,7 @@
     --font-secondary: "Arimo", system-ui;
 
     --font-size-content: #{typo(16px, 18px)};
-    --font-size-content-small: #{typo(16px, 18px)};
+    --font-size-content-small: #{typo(12px, 14px)};
 
     /// Grosseur des textes
     --font-size-h1: #{typo(28px, 42px)};
@@ -16,7 +16,7 @@
     --font-size-h4: #{typo(28px, 42px)};
     --font-size-h5: #{typo(28px, 42px)};
 
-    --font-size-btn: #{typo(28px, 42px)};
+    --font-size-btn: #{typo(14px, 18px)};
     --font-size-link: #{typo(12px, 16px)};
     --font-size-logo: #{typo(24px, 36px)};
 }
