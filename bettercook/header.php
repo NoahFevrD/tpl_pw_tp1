@@ -29,21 +29,28 @@
     <!-- SECTION HEADER -->
     <header data-component="Header" class="header" data-threshold=".175">
         <div class="wrapper">
-            <a class="logo" href="<?php bloginfo('url'); ?>">
-                <svg class="icon icon--md">
-                    <use xlink:href="#icon-logo"></use>
-                </svg>
-                BETTER<span>Cook</span>
-            </a>
+                <a href="<?php bloginfo('url') ?>" class="logo">
+                    <svg class="icon icon--md">
+                        <use xlink:href="#icon-logo"></use>
+                    </svg>
+                    <?php if( have_rows('logo_name', 'options') ): ?>
+                        <?php while( have_rows('logo_name', 'options') ): the_row() ?>
+                            <?php if( get_sub_field('bold')): ?>
+                                <?php the_sub_field('text') ?>
+                            <?php else: ?>    
+                                <span><?php the_sub_field('text') ?></span>
+                            <?php endif; ?>
+                        <?php endwhile; ?>
+                    <?php else:?>
+                        <?php bloginfo('name'); ?>
+                    <?php endif ?>
+                </a>
 
-            <nav class="navigation">
-                <ul>
-                    <li><a href="../front-page.html">Accueil</a></li>
-                    <li><a href="../recette.html">Test Recette</a></li>
-                    <li><a href="./">Nos recettes</a></li>
-                    <li><a href="../contact.html">Nous contacter</a></li>
-                </ul>
-            </nav>
+            <?php wp_nav_menu(array(
+                "theme_location" => "menu_principale",
+                "container_class" => "navigation",
+                "container" => "nav",
+            )); ?>
 
             <div class="menu-btn js-toggle">
                 <svg class="icon open">

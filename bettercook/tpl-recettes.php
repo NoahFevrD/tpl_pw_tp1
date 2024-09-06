@@ -6,7 +6,7 @@
     <section class="hero small-hero">
         <div class="wrapper big-wrapper">
             <div class="media">
-                <img src="assets/images/hero-accueil.jpg" alt="el cooker">
+                <?php the_post_thumbnail(); ?>
             </div>
 
             <div class="content">

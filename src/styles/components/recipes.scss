@@ -12,7 +12,7 @@
         flex-direction: column;
         gap: var(--spacing-md);
         align-items: flex-start;
-        overflow-x: hidden;
+        overflow: visible;
     }
 
     .btn

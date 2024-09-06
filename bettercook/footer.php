@@ -2,67 +2,43 @@
 <footer class="footer">
         <div class="wrapper">
             <div class="flex">
-                <a href="./" class="logo">
+                <a href="<?php bloginfo('url') ?>" class="logo">
                     <svg class="icon icon--md">
                         <use xlink:href="#icon-logo"></use>
                     </svg>
-                    BETTER<span>Cook</span>
+                    <?php if( have_rows('logo_name', 'options') ): ?>
+                        <?php while( have_rows('logo_name', 'options') ): the_row() ?>
+                            <?php if( get_sub_field('bold')): ?>
+                                <?php the_sub_field('text') ?>
+                            <?php else: ?>    
+                                <span><?php the_sub_field('text') ?></span>
+                            <?php endif; ?>
+                        <?php endwhile; ?>
+                    <?php else:?>
+                        <?php bloginfo('name'); ?>
+                    <?php endif ?>
                 </a>
 
-                <ul class="socials">
-                    <li>
-                        <a href="">
-                            <svg class="icon icon--md">
-                                <use xlink:href="#icon-facebook"></use>
-                            </svg>
-                        </a>
-                    </li>
+                <?php if( have_rows('socials', 'options') ): ?>
+                    <ul class="socials">
+                        <?php while( have_rows('socials', 'options') ): the_row() ?>
 
-                    <li>
-                        <a href="">
-                            <svg class="icon icon--md">
-                                <use xlink:href="#icon-twitter"></use>
-                            </svg>
-                        </a>
-                    </li>
+                            <li>
+                                <a href="<?php the_sub_field('link'); ?>">
+                                    <svg class="icon icon--md">
+                                        <use xlink:href="#icon-<?php the_sub_field('name') ?>"></use>
+                                    </svg>
+                                </a>
+                            </li>
 
-                    <li>
-                        <a href="">
-                            <svg class="icon icon--md">
-                                <use xlink:href="#icon-youtube"></use>
-                            </svg>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="">
-                            <svg class="icon icon--md">
-                                <use xlink:href="#icon-pinterest"></use>
-                            </svg>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="">
-                            <svg class="icon icon--md">
-                                <use xlink:href="#icon-instagram"></use>
-                            </svg>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="">
-                            <svg class="icon icon--md">
-                                <use xlink:href="#icon-tiktok"></use>
-                            </svg>
-                        </a>
-                    </li>
-                </ul>
+                        <?php endwhile; ?>
+                    </ul>
+                <?php endif; ?>
             </div>
 
             <hr>
 
-            <p class="small">©2024 BETTERCook. Tous droits réservés.</p>
+            <p class="small">©<?php echo date('Y') ?> <?php the_field('copyright', 'options') ?></p>
         </div>
     </footer>
 

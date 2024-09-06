@@ -1,3 +1,5 @@
+<?php /* Template Name: Page Contact */ ?>
+
 <?php get_header(); ?>
 
     <!-- SECTION HERO -->
