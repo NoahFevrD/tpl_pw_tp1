@@ -74,6 +74,18 @@ export default class Carousel
         }
 
         // Added Settings
-        
+        // Recipes
+        if("recipes" in dataset)
+        this.options.breakpoints = {
+            1024: {
+                slidesPerView: 3,
+            },
+            768: {
+                slidesPerView: 2.5,
+            },
+            480: {
+                slidesPerView: 1.5,
+            }
+        }
     }
 }
