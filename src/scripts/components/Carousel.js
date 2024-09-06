@@ -87,5 +87,11 @@ export default class Carousel
                 slidesPerView: 1.5,
             }
         }
+
+        // Gallery
+        if("gallery" in dataset)
+        {
+            this.options.slidesPerView = "auto"
+        }
     }
 }

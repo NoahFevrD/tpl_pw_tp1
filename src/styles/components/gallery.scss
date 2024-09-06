@@ -1,0 +1,65 @@
+/* ==========================================================================
+   gallery / component
+   ========================================================================== */
+
+.gallery
+{
+    padding: var(--spacing-lg) 0;
+    background-color: var(--color-secondary);
+
+    .wrapper
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-md);
+    }
+
+    .swiper, .swiper-wrapper
+    {
+        width: 100%;
+    }
+
+    .swiper
+    {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .swiper-pagination
+    {
+        --swiper-pagination-bullet-size: 12px;
+        --swiper-pagination-color: var(--color-primary);
+        --swiper-pagination-bullet-inactive-color: var(--color-black);
+        --swiper-pagination-bullet-inactive-opacity: .25;
+
+        margin-top: var(--spacing-sm);
+        position: unset;
+
+        .swiper-pagination-bullet
+        {
+            transition: all .35s $ease-out-expo;
+        }
+    }
+
+    .card
+    {
+        height: auto;
+        display: flex;
+        max-width: 350px;
+        gap: var(--spacing-sm);
+        flex-direction: column;
+        align-items: flex-start;
+        background: var(--color-tertiary);
+        border-radius: var(--spacing-sm);
+        padding: var(--spacing-sm);
+
+        img
+        {
+            display: block;
+            object-fit: cover;
+            object-position: center;
+            border-radius: var(--spacing-xs);
+            width: 100%;
+        }
+    }
+}

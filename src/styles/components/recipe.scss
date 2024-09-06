@@ -1,0 +1,104 @@
+/* ==========================================================================
+   recipe / component
+   ========================================================================== */
+
+.recipe
+{
+    padding: var(--spacing-lg) 0;
+
+    .wrapper
+    {
+        position: relative;
+        flex-direction: column-reverse;
+        gap: var(--spacing-md);
+        display: flex;
+    }
+
+    article
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+        width: 65%;
+
+        h2
+        {
+            margin-bottom: var(--spacing-sm);
+        }
+    }
+
+    aside
+    {
+        right: 0;
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        position: absolute;
+        top: var(--spacing-lg);
+        background-color: var(--color-secondary);
+        border-radius: var(--spacing-sm);
+        padding: var(--spacing-md);
+    }
+
+    .checkbox
+    {
+        --checkbox-size: 24px;
+        --checkbox-border: 3px;
+
+        --border-size: 2px;
+        --pad-bottom: var(--spacing-xs);
+
+        display: flex;
+        align-items: center;
+        padding: 0 var(--spacing-sm);
+        justify-content: space-between;
+        border-bottom: var(--border-size) solid var(--color-gray);
+        transition: all .55s $ease-out-expo;
+        padding-bottom: var(--pad-bottom);
+        gap: var(--spacing-sm);
+        position: relative;
+        cursor: pointer;
+        opacity: .7;
+
+        .check
+        {
+            transition: all .55s $ease-out-expo;
+            opacity: .3;
+        }
+
+        &.is-active
+        {
+            opacity: 1;
+
+            .check
+            {
+                opacity: 1;
+            }
+        }
+    }
+
+    .step
+    {
+        display: flex;
+        flex-direction: column;
+        padding: 0 var(--spacing-sm);
+        align-items: flex-start;
+        gap: var(--spacing-xs);
+    }
+
+    @media screen and (max-width: $breakpoint-sm)
+    {
+        article
+        {
+            width: unset;
+        }
+
+        aside
+        {
+            position: unset;
+            width: unset;
+        }
+    }
+}
