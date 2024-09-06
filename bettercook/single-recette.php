@@ -8,10 +8,19 @@
             </div>
 
             <div class="content">
-                <h4>Categorie</h4>
+                <?php $categories = array(); ?>
+                <?php foreach ( get_the_category() as $category) : ?>
+                    <?php array_push($categories, $category->name); ?>
+                <?php endforeach; ?>
+
+                <?php if( $categories ): ?>
+                    <h4>
+                        <?php implode(',', $categories); ?>
+                    </h4>
+                <?php endif; ?>
                 <h1><?php the_title(); ?></h1>
 
-                <svg class="icon favorite" data-component="Toggle">
+                <svg class="icon favorite" <?php if ( get_field('recipe_favorite') ): ?>data-start-active<?php endif; ?> data-component="Toggle">
                     <use xlink:href="#icon-favorite"></use>
                 </svg>
             </div>
@@ -24,14 +33,26 @@
 
             <div class="cols">
                 <div class="col">
-                    <h3>Par: LE GOAT CHATPGT</h3>
+                    <?php $credits = get_field('recipe_credit'); ?>
+                    <?php if( $credits ): ?>
+                        <?php foreach($credits as $credit):?>
+                            <h3>Par: <?php get_the_title($credit->ID) ?></h3>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+
                     <p><?php the_content(); ?></p>
                 </div>
 
-                <div class="col">
-                    <h3>Preparation: <span>15 minutes</span></h3>
-                    <h3>Cuisson: <span>35 minutes</span></h3>
-                </div>
+                <?php if( have_rows('recipe_time') ): ?>
+                    <?php while(have_rows('recipe_time') ): the_row() ?>
+
+                    <div class="col">
+                        <h3>Préparation: <span><?php the_sub_field('preparation'); ?> minutes</span></h3>
+                        <h3>Cuisson: <span><?php the_sub_field('cooking'); ?> minutes</span></h3>
+                    </div>
+
+                    <?php endwhile; ?>
+                <?php endif; ?>
             </div>
         </div>
     </section>
@@ -39,37 +60,40 @@
     <!-- SECTION RECIPE -->
     <section class="recipe">
         <div class="wrapper">
-            <article>
-                <h2>Preparation</h2>
+            <?php if( have_rows('recipe_steps') ): ?>
+                <article>
+                    <h2>Préparation</h2>
+                    <?php $current = 1; ?>
+                    <?php while( have_rows('recipe_steps') ): the_row() ?>
+                    <div class="step">
+                        <h3>Etape <?php echo $current ?></h3>
+                        <p><?php the_sub_field('step'); ?></p>
+                    </div>
+                    <?php $current++; ?>
+                    <?php endwhile; ?>
 
-                <div class="step">
-                    <h3>Etape 1</h3>
-                    <p>blablabla met le dans le four stp</p>
-                </div>
-                <div class="step">
-                    <h3>Etape 1</h3>
-                    <p>blablabla met le dans le four stp</p>
-                </div>
-                <div class="step">
-                    <h3>Etape 1</h3>
-                    <p>blablabla met le dans le four stp</p>
-                </div>
-            </article>
+                </article>
+            <?php endif; ?>
 
-            <aside>
-                <h3>Ingredients</h3>
+            <?php if( have_rows('recipe_ingredients') ): ?>
+                <aside>
+                    <h3>Ingredients</h3>
 
-                <div class="checkbox" data-component="Toggle">
-                    <h4>Pomme Pomme Pomme Pomme Pomme Pomme</h4>
+                        <?php while( have_rows('recipe_ingredients') ): the_row() ?>
+                            <div class="checkbox" data-component="Toggle">
+                                <h4><?php the_sub_field('name'); ?></h4>
 
-                    <svg class="icon icon--lg check">
-                        <use xlink:href="#icon-check"></use>
-                    </svg>
-                </div>
-            </aside>
+                                <svg class="icon icon--lg check">
+                                    <use xlink:href="#icon-check"></use>
+                                </svg>
+                            </div>
+                        <?php endwhile; ?>
+                </aside>
+            <?php endif; ?>
         </div>
     </section>
 
+    <?php if( have_rows('recipe_gallery') ): ?>
     <!-- SECTION GALLERY -->
     <section class="gallery">
         <div class="wrapper">
@@ -78,29 +102,25 @@
 
             <div class="swiper" data-component="Carousel" data-space="30" data-gallery data-free-mode>
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide card">
-                        <img src="assets/images/miam.jpg" alt="Bread">
-                        <h4>Bad Bread</h4>
-                    </div>
 
-                    <div class="swiper-slide card">
-                        <img src="assets/images/miam.jpg" alt="Bread">
-                        <h4>Bad Bread</h4>
-                    </div>
+                    <?php while( have_rows('recipe_gallery') ): the_row() ?>
+                        <div class="swiper-slide card">
+                            <?php $image = get_sub_field('image'); ?>
+                            <?php if( $image ): ?>
+                                <img src="<?php echo $image['url']?>" alt="<?php echo $image['alt'] ?>">
+                            <?php endif; ?>
 
-                    <div class="swiper-slide card">
-                        <img src="assets/images/miam.jpg" alt="Bread">
-                        <h4>Bad Bread</h4>
-                    </div>
+                            <?php if( get_sub_field('legend') ): ?>
+                                <h4><?php the_sub_field('legend'); ?></h4>
+                            <?php endif; ?>
+                        </div>
+                    <?php endwhile; ?>
 
-                    <div class="swiper-slide card">
-                        <img src="assets/images/miam.jpg" alt="Bread">
-                        <h4>Bad Bread</h4>
-                    </div>
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
         </div>
     </section>
+    <?php endif; ?>
 
 <?php get_footer(); ?>

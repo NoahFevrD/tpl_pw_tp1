@@ -19,7 +19,7 @@
         <div class="wrapper">
             <?php the_content(); ?>
 
-            <div class="swiper" data-component="Carousel" data-recipes data-space="30" data-slides="3">
+            <div class="swiper" data-component="Carousel" data-recipes data-space="30" data-slides="1">
                 <div class="swiper-wrapper">
                     <a class="swiper-slide card" href="#">
                         <div class="media">
