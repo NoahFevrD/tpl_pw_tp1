@@ -1,5 +1,7 @@
 import Header from "./components/Header";
 import Toggle from "./components/Toggle";
+import Scrolly from "./components/Scrolly";
+import Carousel from "./components/Carousel";
 
 export default class ComponentFactory {
   constructor() {
@@ -7,6 +9,8 @@ export default class ComponentFactory {
     this.componentList = {
       Header,
       Toggle,
+      Scrolly,
+      Carousel,
     };
     this.init();
   }

@@ -20,12 +20,15 @@ a {
 {
     --pad-vert: 10px;
     --pad-horz: 20px;
+    --border-size: 3px;
 
     display: inline;
     border-radius: 1000px;
     font-size: var(--font-size-btn);
     background-color: var(--color-primary);
-    padding: var(--pad-vert) var(--pad-horz);
+    padding: calc(var(--pad-vert) - var(--border-size)) calc(var(--pad-horz) - var(--border-size));
+    border: var(--color-primary) solid var(--border-size);
+    color: var(--color-white);
 
     &:hover
     {

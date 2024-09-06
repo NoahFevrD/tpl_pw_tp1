@@ -12,6 +12,18 @@ body {
     line-height: 1.6;
 }
 
+html
+{
+    scroll-behavior: smooth;
+}
+
+*
+{
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
 .small
 {
     font-size: var(--font-size-content-small);

@@ -1,0 +1,106 @@
+/* ==========================================================================
+   recipes / component
+   ========================================================================== */
+
+.recipes
+{
+    padding: var(--spacing-xl) 0;
+
+    .wrapper
+    {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        align-items: flex-start;
+        overflow: hidden;
+    }
+
+    .btn
+    {
+        align-self: center;
+    }
+
+    .swiper, .swiper-wrapper
+    {
+        width: 100%;
+        overflow: visible;
+    }
+
+    .swiper
+    {
+        padding: 0 var(--spacing-sm);
+    }
+
+    .swiper-pagination
+    {
+        --swiper-pagination-bullet-size: 12px;
+        --swiper-pagination-color: var(--color-primary);
+        --swiper-pagination-bullet-inactive-color: var(--color-black);
+        --swiper-pagination-bullet-inactive-opacity: .25;
+
+        margin-top: var(--spacing-sm);
+        position: unset;
+
+        .swiper-pagination-bullet
+        {
+            transition: all .35s $ease-out-expo;
+        }
+    }
+    
+    .card
+    {
+        --border-size: 3px;
+
+        height: auto;
+        color: var(--color-black);
+        background: var(--color-secondary);
+        padding: calc(var(--spacing-sm) - var(--border-size));
+        padding-bottom: calc(var(--spacing-md) - var(--border-size));
+        border: var(--color-secondary) solid var(--border-size);
+        transition: all .55s $ease-out-expo;
+        border-radius: var(--spacing-sm);
+        transform: scale(1);
+        
+        .media
+        {
+            height: 200px;
+            margin-bottom: var(--spacing-sm);
+            border-radius: var(--spacing-xs);
+            overflow: hidden;
+            
+            img
+            {
+                object-fit: cover;
+                object-position: center;
+                display: block;
+                height: 100%;
+                width: 100%;
+            }
+        }
+        
+        .content
+        {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0 var(--spacing-sm);
+            gap: var(--spacing-xs);
+
+            h5
+            {
+                opacity: .6;
+            }
+        }
+
+        .small
+        {
+            margin-top: var(--spacing-xs);
+        }
+        
+        &:hover
+        {
+            border: var(--color-primary) solid var(--border-size);
+            transform: scale(1.025);
+        }
+    }
+}

@@ -45,8 +45,8 @@
         {
             transform: scale(1);
             color: var(--color-black);
-            width: calc(var(--btn-size) - var(--border-size));
-            height: calc(var(--btn-size) - var(--border-size));
+            width: var(--btn-size);
+            height: var(--btn-size);
             border: var(--border-size) solid var(--color-white);
             border-radius: 1000px;
             background-color: var(--color-white);

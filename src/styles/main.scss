@@ -28,10 +28,12 @@
 // COMPONENTS
 // Composants d'interface utilisateur spécifiques.
 // C’est là que la majorité de notre travail a lieu.
+@import "../../node_modules/swiper/swiper-bundle";
 @import 'components/icons';
 
 @import 'components/header';
 @import 'components/hero';
+@import 'components/recipes';
 @import 'components/footer';
 
 // UTILITIES
