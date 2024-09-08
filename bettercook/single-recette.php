@@ -19,8 +19,7 @@
                     </h4>
                 <?php endif; ?>
                 <h1><?php the_title(); ?></h1>
-
-                <svg class="icon favorite" <?php if ( get_field('recipe_favorite') ): ?>data-start-active<?php endif; ?> data-component="Toggle">
+                <svg class="icon favorite <?php if ( get_field('recipe_favorite') ): ?>is-active<?php endif; ?>" data-component="Toggle">
                     <use xlink:href="#icon-favorite"></use>
                 </svg>
             </div>
