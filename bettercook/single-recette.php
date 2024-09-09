@@ -15,7 +15,7 @@
 
                 <?php if( $categories ): ?>
                     <h4>
-                        <?php implode(',', $categories); ?>
+                        <?php echo implode(', ', $categories); ?>
                     </h4>
                 <?php endif; ?>
                 <h1><?php the_title(); ?></h1>
@@ -33,10 +33,12 @@
             <div class="cols">
                 <div class="col">
                     <?php $credits = get_field('recipe_credit'); ?>
+                    <?php $cred = array(); ?>
                     <?php if( $credits ): ?>
                         <?php foreach($credits as $credit):?>
-                            <h3>Par: <?php get_the_title($credit->ID) ?></h3>
+                            <?php array_push($cred, get_the_title($credit->ID)) ?>
                         <?php endforeach; ?>
+                            <h3>Par: <?php echo implode(', ', $cred); ?></h3>
                     <?php endif; ?>
 
                     <p><?php the_content(); ?></p>
