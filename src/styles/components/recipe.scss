@@ -8,10 +8,9 @@
 
     .wrapper
     {
-        position: relative;
-        flex-direction: column-reverse;
-        gap: var(--spacing-md);
-        display: flex;
+        display: grid;
+        grid-template-columns: 6fr 5fr;
+        align-items: flex-start;
     }
 
     article
@@ -20,7 +19,6 @@
         flex-direction: column;
         align-items: flex-start;
         gap: var(--spacing-sm);
-        width: 55%;
 
         h2
         {
@@ -30,13 +28,10 @@
 
     aside
     {
-        right: 0;
-        width: 40%;
         display: flex;
         flex-direction: column;
         gap: var(--spacing-sm);
-        position: absolute;
-        top: var(--spacing-lg);
+        margin-top: var(--spacing-lg);
         background-color: var(--color-secondary);
         border-radius: var(--spacing-sm);
         padding: var(--spacing-md);
@@ -96,6 +91,14 @@
 
     @media screen and (max-width: $breakpoint-sm)
     {
+        .wrapper
+        {
+            align-items: unset;
+            flex-direction: column-reverse;
+            gap: var(--spacing-md);
+            display: flex;
+        }
+
         article
         {
             width: unset;

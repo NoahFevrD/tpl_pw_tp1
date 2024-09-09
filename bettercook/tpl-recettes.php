@@ -15,59 +15,57 @@
         </div>
     </section>
 
+    <?php $args = array(
+        'post_type' => 'recette',
+        'post_statues' => 'publish',
+        'posts_per_page' => '-1',
+        'order' => 'desc',
+        'orderby' => 'post_date',
+    ); ?>
+    <?php $query = new WP_Query( $args ); ?>
+    <?php if( $query->have_posts() ): ?>
+
+    <!-- SECTION RECIPES -->
     <section class="recipes">
         <div class="wrapper">
             <?php the_content(); ?>
+                
+                <div class="swiper" data-component="Carousel" data-recipes data-space="30" data-slides="1">
+                    <div class="swiper-wrapper">
+                        <?php while( $query->have_posts() ): $query->the_post() ?>
 
-            <div class="swiper" data-component="Carousel" data-recipes data-space="30" data-slides="1">
-                <div class="swiper-wrapper">
-                    <a class="swiper-slide card" href="#">
-                        <div class="media">
-                            <img src="assets/images/mium.jpg" alt="Delisioco">
-                        </div>
-                        <div class="content">
-                            <h5>Faites par grand mere</h5>
-                            <h3>Les frites parfaites de grand maman</h3>
-                            <p class="small">blablabla cest juste trop bon</p>
-                        </div>
-                    </a>
+                            <a class="swiper-slide card" href="<?php the_permalink(); ?>">
+                                <div class="media">
+                                    <?php the_post_thumbnail(); ?>
+                                </div>
+                                <div class="content">
+                                    <?php $categories = array(); ?>
 
-                    <a class="swiper-slide card" href="#">
-                        <div class="media">
-                            <img src="assets/images/mium.jpg" alt="Delisioco">
-                        </div>
-                        <div class="content">
-                            <h5>Faites par grand mere</h5>
-                            <h3>Les frites parfaites de grand maman</h3>
-                            <p class="small">blablabla cest juste trop bon (surtout avec de la relish)</p>
-                        </div>
-                    </a>
+                                    <?php foreach ( get_the_category() as $category) : ?>
+                                        <?php array_push($categories, $category->name); ?>
+                                    <?php endforeach; ?>
+                                    
+                                    <?php if( $categories ): ?>
+                                        <h5>
+                                            <?php echo implode(', ', $categories); ?>
+                                        </h5>
+                                    <?php endif; ?>
 
-                    <a class="swiper-slide card" href="#">
-                        <div class="media">
-                            <img src="assets/images/mium.jpg" alt="Delisioco">
-                        </div>
-                        <div class="content">
-                            <h5>Faites par grand mere</h5>
-                            <h3>Les frites parfaites de grand maman</h3>
-                            <p class="small">blablabla cest juste trop bon (surtout avec de la relish)</p>
-                        </div>
-                    </a>
+                                    <h3><?php the_title(); ?></h3>
 
-                    <a class="swiper-slide card" href="#">
-                        <div class="media">
-                            <img src="assets/images/mium.jpg" alt="Delisioco">
-                        </div>
-                        <div class="content">
-                            <h5>Faites par grand mere</h5>
-                            <h3>Les frites parfaites de grand maman</h3>
-                            <p class="small">blablabla cest juste trop bon (surtout avec de la relish)</p>
-                        </div>
-                    </a>
+                                    <p class="small"><?php the_excerpt(); ?></p>
+                                </div>
+                            </a>
+
+                        <?php endwhile; ?>
+                    </div>
+                    <div class="swiper-pagination"></div>
                 </div>
-                <div class="swiper-pagination"></div>
-            </div>
+
         </div>
     </section>
+    
+    <?php endif; ?>
+    <?php wp_reset_postdata(); ?>
 
 <?php get_footer(); ?>
